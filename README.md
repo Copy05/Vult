@@ -6,3 +6,5 @@ Vult is a service that works in the background for your safety and optimizes you
 
 - Temporary File Cleaning
 - Observing
+- Blacklist Download Folder Scanning
+- Regular Scanning

@@ -32,8 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.VultNotif = new System.Windows.Forms.NotifyIcon(this.components);
             this.VultNotiMenu = new System.Windows.Forms.ContextMenu();
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.InfoItem = new System.Windows.Forms.MenuItem();
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.SecurityInterval = new System.Windows.Forms.Timer(this.components);
+            this.VultSecurityNotif = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // VultNotif
@@ -48,17 +50,27 @@
             this.InfoItem,
             this.menuItem1});
             // 
+            // InfoItem
+            // 
+            this.InfoItem.Index = 0;
+            this.InfoItem.Text = "&Info";
+            this.InfoItem.Click += new System.EventHandler(this.InfoItem_Click);
+            // 
             // menuItem1
             // 
             this.menuItem1.Index = 1;
             this.menuItem1.Text = "&Exit";
             this.menuItem1.Click += new System.EventHandler(this.menuItem1_Click);
             // 
-            // InfoItem
+            // SecurityInterval
             // 
-            this.InfoItem.Index = 0;
-            this.InfoItem.Text = "&Info";
-            this.InfoItem.Click += new System.EventHandler(this.InfoItem_Click);
+            this.SecurityInterval.Interval = 30000;
+            this.SecurityInterval.Tick += new System.EventHandler(this.SecurityInterval_Tick);
+            // 
+            // VultSecurityNotif
+            // 
+            this.VultSecurityNotif.Text = "notifyIcon1";
+            this.VultSecurityNotif.Visible = true;
             // 
             // Form1
             // 
@@ -84,6 +96,8 @@
         private System.Windows.Forms.ContextMenu VultNotiMenu;
         private System.Windows.Forms.MenuItem menuItem1;
         private System.Windows.Forms.MenuItem InfoItem;
+        private System.Windows.Forms.Timer SecurityInterval;
+        private System.Windows.Forms.NotifyIcon VultSecurityNotif;
     }
 }
 

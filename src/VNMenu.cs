@@ -20,7 +20,7 @@ namespace Vult
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            new VNMExit().Show();
         }
 
         private void VNMenu_Deactivate(object sender, EventArgs e)
