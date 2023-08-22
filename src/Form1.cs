@@ -7,7 +7,6 @@ namespace Vult
 {
     public partial class Form1 : Form
     {
-        
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +23,7 @@ namespace Vult
             VultNotif.ShowBalloonTip(1000);
             VNMSecurity.ClearTempFolder();
             VNMSecurity.ScanDownloadFolder();
+            VNMSecurity.CheckForCheats();
             SecurityInterval.Start();
         }
 

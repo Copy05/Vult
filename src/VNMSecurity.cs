@@ -1,18 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace Vult
 {
     internal class VNMSecurity
     {
+        public static void CheckForCheats()
+        {
+            Process[] processes = Process.GetProcesses();
+            foreach (Process process in processes)
+            {
+                if (process.ProcessName.ToLower().Contains("cheat"))
+                {
+                    try
+                    {
+                        new Form1().SendNotification("A Cheat Programm called " + process.ProcessName + " has been closed.", "Vult");
+                        process.Kill();
+                    } catch (Exception)
+                    {
+                        new VNMError("Something Went wrong while processing a cheat software", "Security Error").Show();
+                    }
+
+                }
+            }
+        }
+
         public static void ScanDownloadFolder()
         {
             var un = Environment.UserName;
-            //var dir = new DirectoryInfo(@"C:\Users\" + un + @"\Downloads");
-            var dir = new DirectoryInfo(@"P:\Downloads\Example");
+            var dir = new DirectoryInfo(@"C:\Users\" + un + @"\Downloads");
             List<string> search = Directory.GetFiles(dir.ToString(), "*.*", SearchOption.AllDirectories).ToList();
             var blacklist = @"BlackListSoftware.txt";
 
@@ -32,10 +51,9 @@ namespace Vult
                             break;
                         }
                     }
-                } catch (Exception e)
+                } catch (Exception)
                 {
                     new VNMError("Scanning the Download Folder has failed.", "Security Error").Show();
-                    MessageBox.Show(e.ToString());
                 }
             }
         }
@@ -51,7 +69,7 @@ namespace Vult
                 {
                     File.Delete(file);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // Nothing
                 }
@@ -63,7 +81,7 @@ namespace Vult
                 {
                     Directory.Delete(folder, true);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // Nothing
                 }

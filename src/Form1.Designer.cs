@@ -64,7 +64,7 @@
             // 
             // SecurityInterval
             // 
-            this.SecurityInterval.Interval = 30000;
+            this.SecurityInterval.Interval = 10000;
             this.SecurityInterval.Tick += new System.EventHandler(this.SecurityInterval_Tick);
             // 
             // VultSecurityNotif

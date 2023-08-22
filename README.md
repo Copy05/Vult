@@ -8,3 +8,4 @@ Vult is a service that works in the background for your safety and optimizes you
 - Observing
 - Blacklist Download Folder Scanning
 - Regular Scanning
+- Blocking Cheat Software
