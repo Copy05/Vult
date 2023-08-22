@@ -10,7 +10,9 @@ namespace vltguard
     {
         public void CheckForVult()
         {
-            string VultMD5Hash = "219383a9712c7c42e057332ea0d1038c";
+            // https://emn178.github.io/online-tools/md5_checksum.html
+            // To get Vult's hash.
+            string VultMD5Hash = "0b47065143c4c585c32e2efac70e7e38";
 
             foreach (var process in Process.GetProcesses())
             {

@@ -36,6 +36,7 @@
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.SecurityInterval = new System.Windows.Forms.Timer(this.components);
             this.VultSecurityNotif = new System.Windows.Forms.NotifyIcon(this.components);
+            this.AVInterval = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // VultNotif
@@ -72,6 +73,11 @@
             this.VultSecurityNotif.Text = "notifyIcon1";
             this.VultSecurityNotif.Visible = true;
             // 
+            // AVInterval
+            // 
+            this.AVInterval.Interval = 600000;
+            this.AVInterval.Tick += new System.EventHandler(this.AVInterval_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,6 +104,7 @@
         private System.Windows.Forms.MenuItem InfoItem;
         private System.Windows.Forms.Timer SecurityInterval;
         private System.Windows.Forms.NotifyIcon VultSecurityNotif;
+        private System.Windows.Forms.Timer AVInterval;
     }
 }
 

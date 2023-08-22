@@ -22,6 +22,7 @@ namespace Vult
             VultNotif.ShowBalloonTip(1000);
 
             SecurityInterval.Start();
+            AVInterval.Start();
         }
 
         public void SendNotification(string text, string title)
@@ -68,6 +69,10 @@ namespace Vult
             VNMSecurity.ClearTempFolder();
             VNMSecurity.ScanDownloadFolder();
             VNMSecurity.CheckForCheats();
+        }
+
+        private void AVInterval_Tick(object sender, EventArgs e)
+        {
             VNMSecurity.EraseMalware();
         }
     }

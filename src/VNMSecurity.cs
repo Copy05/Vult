@@ -33,7 +33,7 @@ namespace Vult
             var MD5Signs = File.ReadAllLines("BlacklistHashes.txt");
 
             var un = Environment.UserName;
-            var dir = new DirectoryInfo(@"C:\Users\" + un + @"\Downloads");
+            var dir = new DirectoryInfo(@"C:\");
             List<string> search = Directory.GetFiles(dir.ToString(), "*.*", SearchOption.AllDirectories).ToList();
 
             foreach (string file in search)
@@ -44,8 +44,9 @@ namespace Vult
 
                     if (Array.Exists(MD5Signs, hash => hash.Equals(fileMD5Hash)))
                     {
-                        new Form1().SendNotification("A Malicious File " + file + " has been removed.", "Vult");
-                        File.Delete(file);
+                        new VNMDetection(file).Show();
+                        //new Form1().SendNotification("A Malicious File " + file + " has been removed.", "Vult");
+                        //File.Delete(file);
                     }
 
                 }

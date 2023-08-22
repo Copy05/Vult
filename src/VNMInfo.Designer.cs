@@ -41,9 +41,10 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(16, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 76);
+            this.label2.Size = new System.Drawing.Size(252, 133);
             this.label2.TabIndex = 1;
-            this.label2.Text = "The SystemGuard without bullshit\r\n\r\nDevelopers:\r\nCopy05";
+            this.label2.Text = "The SystemGuard without bullshit\r\n\r\nDevelopers:\r\nCopy05\r\n\r\nMD5 Hashes by:\r\n@VXSha" +
+    "re";
             // 
             // button2
             // 
