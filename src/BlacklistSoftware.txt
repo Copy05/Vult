@@ -2,3 +2,8 @@
 MEMZ.exe
 VultInstaller.exe
 iloveyou.exe
+Cheat Engine.exe
+FreeLocalChatGPT.exe
+sponsorship.scr
+Sponsorship.scr
+SponsorshipContract.scr

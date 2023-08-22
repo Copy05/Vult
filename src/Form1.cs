@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Vult
@@ -16,14 +14,13 @@ namespace Vult
         private void Form1_Load(object sender, EventArgs e)
         {
             Hide();
+
             VultNotif.Icon = this.Icon;
             VultNotif.ContextMenu = VultNotiMenu;
             VultNotif.BalloonTipTitle = "Vult";
             VultNotif.BalloonTipText = "Vult is running in the background.";
             VultNotif.ShowBalloonTip(1000);
-            VNMSecurity.ClearTempFolder();
-            VNMSecurity.ScanDownloadFolder();
-            VNMSecurity.CheckForCheats();
+
             SecurityInterval.Start();
         }
 
@@ -33,6 +30,7 @@ namespace Vult
             VultSecurityNotif.BalloonTipTitle = title;
             VultSecurityNotif.BalloonTipText = text;
             VultSecurityNotif.ShowBalloonTip(1000);
+
             VultSecurityNotif.Icon = null;
         }
 
@@ -70,6 +68,7 @@ namespace Vult
         {
             VNMSecurity.ClearTempFolder();
             VNMSecurity.ScanDownloadFolder();
+            VNMSecurity.CheckForCheats();
         }
     }
 }
