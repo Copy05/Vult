@@ -73,6 +73,7 @@ namespace Vult
 
         private void AVInterval_Tick(object sender, EventArgs e)
         {
+            VNMSecurity.ScanAllProcesses();
             VNMSecurity.EraseMalware();
         }
     }

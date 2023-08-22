@@ -8,11 +8,13 @@ namespace vltguard
 {
     public class VultGuard
     {
-        public void CheckForVult()
+        public bool CheckForVult()
         {
             // https://emn178.github.io/online-tools/md5_checksum.html
             // To get Vult's hash.
-            string VultMD5Hash = "0b47065143c4c585c32e2efac70e7e38";
+            string VultMD5Hash = "601adb42ea61350b6f951894430a7966";
+
+            bool vultFound = false;
 
             foreach (var process in Process.GetProcesses())
             {
@@ -33,14 +35,17 @@ namespace vltguard
 
                     if (processMD5Hash == VultMD5Hash)
                     {
-                        Environment.Exit(1);
+                        vultFound = true;
+                        break;
                     }
                 }
                 catch (Exception)
                 {
-                    // Ignore any processes that we can't access
+                    // Ignore
                 }
             }
+
+            return vultFound;
         }
     }
 }

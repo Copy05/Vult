@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VNMDetection));
             this.KeepBtn = new System.Windows.Forms.Button();
             this.Deletebtn = new System.Windows.Forms.Button();
             this.MessageCaption = new System.Windows.Forms.Label();
@@ -114,6 +115,7 @@
             this.Controls.Add(this.MessageCaption);
             this.Controls.Add(this.MessageText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(708, 274);
             this.MinimumSize = new System.Drawing.Size(708, 274);
             this.Name = "VNMDetection";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VNMExit));
             this.Closebtn = new System.Windows.Forms.Button();
             this.MessageCaption = new System.Windows.Forms.Label();
             this.MessageText = new System.Windows.Forms.Label();
@@ -100,6 +101,7 @@
             this.Controls.Add(this.MessageCaption);
             this.Controls.Add(this.MessageText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(666, 237);
             this.MinimumSize = new System.Drawing.Size(666, 237);
             this.Name = "VNMExit";

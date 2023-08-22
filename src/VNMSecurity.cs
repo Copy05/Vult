@@ -32,27 +32,61 @@ namespace Vult
         {
             var MD5Signs = File.ReadAllLines("BlacklistHashes.txt");
 
-            var un = Environment.UserName;
-            var dir = new DirectoryInfo(@"C:\");
-            List<string> search = Directory.GetFiles(dir.ToString(), "*.*", SearchOption.AllDirectories).ToList();
+            try
+            {
+                var un = Environment.UserName;
+                var dir = new DirectoryInfo(@"C:\");
+                List<string> search = Directory.GetFiles(dir.ToString(), "*.*", SearchOption.AllDirectories).ToList();
 
-            foreach (string file in search)
+                foreach (string file in search)
+                {
+                    try
+                    {
+                        string fileMD5Hash = Crypto.GetMD5(file);
+
+                        if (Array.Exists(MD5Signs, hash => hash.Equals(fileMD5Hash)))
+                        {
+                            new VNMDetection(file).Show();
+                            //new Form1().SendNotification("A Malicious File " + file + " has been removed.", "Vult");
+                            //File.Delete(file);
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        new VNMError("Something went from while protecting you", "Security Error");
+                    }
+                }
+            } catch (Exception)
+            {
+                new VNMError("Something went from while scanning your device. process aborted", "Security Scan Error");
+                return;
+            }
+
+        }
+
+        public static void ScanAllProcesses()
+        {
+            List<string> blacklist = File.ReadAllLines("BlacklistHashes.txt").ToList();
+            Process[] processes = Process.GetProcesses();
+
+            foreach (Process process in processes)
             {
                 try
                 {
-                    string fileMD5Hash = Crypto.GetMD5(file);
+                    string processHash = Crypto.GetMD5(process.MainModule.FileName);
 
-                    if (Array.Exists(MD5Signs, hash => hash.Equals(fileMD5Hash)))
+                    // Check if the process has an MD5 hash that is in the blacklist
+                    if (blacklist.Contains(processHash))
                     {
-                        new VNMDetection(file).Show();
-                        //new Form1().SendNotification("A Malicious File " + file + " has been removed.", "Vult");
-                        //File.Delete(file);
+                        process.Kill();
+                        new Form1().SendNotification("A Malicious process " + process + " has been killed.", "Vult");
                     }
-
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    new VNMError("Something went from while protecting you", "Security Error");
+                    // Handle any exceptions that may occur
+                    Console.WriteLine($"Error getting MD5 hash for process {process.ProcessName}: {ex.Message}");
                 }
             }
         }
