@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crypto.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +115,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BlacklistHashes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="BlacklistSoftware.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

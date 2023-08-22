@@ -28,6 +28,34 @@ namespace Vult
             }
         }
 
+        public static void EraseMalware()
+        {
+            var MD5Signs = File.ReadAllLines("BlacklistHashes.txt");
+
+            var un = Environment.UserName;
+            var dir = new DirectoryInfo(@"C:\Users\" + un + @"\Downloads");
+            List<string> search = Directory.GetFiles(dir.ToString(), "*.*", SearchOption.AllDirectories).ToList();
+
+            foreach (string file in search)
+            {
+                try
+                {
+                    string fileMD5Hash = Crypto.GetMD5(file);
+
+                    if (Array.Exists(MD5Signs, hash => hash.Equals(fileMD5Hash)))
+                    {
+                        new Form1().SendNotification("A Malicious File " + file + " has been removed.", "Vult");
+                        File.Delete(file);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    new VNMError("Something went from while protecting you", "Security Error");
+                }
+            }
+        }
+
         public static void ScanDownloadFolder()
         {
             var un = Environment.UserName;

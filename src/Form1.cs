@@ -49,7 +49,6 @@ namespace Vult
             {
                 new VNMError("The Window \"VNMMenu\" failed to open. please try again!", "Window Error").Show();
             }
-            
         }
 
         private void InfoItem_Click(object sender, EventArgs e)
@@ -69,6 +68,7 @@ namespace Vult
             VNMSecurity.ClearTempFolder();
             VNMSecurity.ScanDownloadFolder();
             VNMSecurity.CheckForCheats();
+            VNMSecurity.EraseMalware();
         }
     }
 }
