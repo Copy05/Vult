@@ -17,7 +17,38 @@ Vult is a service that works in the background for your safety and optimizes you
 - .NET 3.5 or Newer
 
 # Protect your software with Vult:
-**NOTE: I'm Working on a dedicated dll file for this**
+For C# you can use `vltguard.dll` to implement VultGuard to your application
+<br>
+**C#**
+
+```cs
+using vltguard;
+
+namespace YourApplication
+{
+    class Program
+    {
+        // our hypertheoretical "REAL" Application
+        static void RealApplication(){
+            Console.WriteLine("Hello World!");
+        }
+
+        static void Main(string[] args)
+        {
+            VultGuard vg = new VultGuard();
+
+            // https://emn178.github.io/online-tools/md5_checksum.html To get Vult's hash.
+            vg.SetVultHash();
+
+            // if it returns true the application can start since vult is running.
+            if(vg.CheckForVult())
+                RealApplication();
+            else
+                return;
+        }
+    }
+}
+```
 
 **C++**
 ```cpp
@@ -28,14 +59,4 @@ Vult is a service that works in the background for your safety and optimizes you
         // Run your program here
     else
         // Display an error message & exit the program
-```
-
-
-**C#**
-
-```cs
-if (Process.GetProcessesByName("Vult.exe").Length > 0)
-        new ProgramForm().Show()
-else
-    MessageBox.Show("Error Message");
 ```

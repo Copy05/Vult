@@ -8,11 +8,20 @@ namespace vltguard
 {
     public class VultGuard
     {
+        public string m_VultHash = "601adb42ea61350b6f951894430a7966";
+
+        // https://emn178.github.io/online-tools/md5_checksum.html
+        // To get Vult's hash.
+        public void SetVultHash(string hash)
+        {
+            m_VultHash = hash;
+        }
+
         public bool CheckForVult()
         {
             // https://emn178.github.io/online-tools/md5_checksum.html
             // To get Vult's hash.
-            string VultMD5Hash = "601adb42ea61350b6f951894430a7966";
+            string VultMD5Hash = m_VultHash;
 
             bool vultFound = false;
 
