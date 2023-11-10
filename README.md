@@ -11,6 +11,11 @@ Vult is a service that works in the background for your safety and optimizes you
 - Regular Scanning
 - Blocking Cheat Software
 
+# What's unprotected
+
+- Memory Execution
+- Shell Code Execution
+
 # Requirements
 
 - Windows 10 or Later
@@ -39,7 +44,7 @@ namespace YourApplication
             VultGuard vg = new VultGuard();
 
             // https://emn178.github.io/online-tools/md5_checksum.html To get Vult's hash.
-            string vultHash = "601adb42ea61350b6f951894430a7966"
+            string vultHash = "601adb42ea61350b6f951894430a7966";
             vg.SetVultHash(vultHash);
 
             // if it returns true the application can start since vult is running.
